@@ -9,13 +9,45 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Add essential styles for fixed script functionality */
+        .shake-body {
+            animation: shake 0.5s;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+            20%, 40%, 60%, 80% { transform: translateX(10px); }
+        }
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            top: -10px;
+            z-index: 9999;
+            animation: fall linear forwards;
+        }
+        @keyframes fall {
+            to { transform: translateY(100vh) rotate(360deg); }
+        }
+        .loading-screen {
+            position: fixed;
+            inset: 0;
+            background: #0f172a;
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
+        }
+    </style>
 </head>
 <body>
     <!-- Loading Animation -->
     <div class="loading-screen" id="loadingScreen">
         <div class="loading-spinner">
             <div class="spinner"></div>
-            <p>Preparing Your Celebration...</p>
+            <p style="color: white; margin-top: 20px;">Preparing Your Celebration...</p>
         </div>
     </div>
 
@@ -204,10 +236,11 @@
     <!-- Confetti Container -->
     <div id="confettiContainer"></div>
 
-    <!-- Background Music (Silent by default) -->
+    <!-- Background Music -->
     <audio id="bgMusic" loop>
         <source src="https://cdn.pixabay.com/download/audio/2022/03/24/audio_3c9f2f5c5d.mp3" type="audio/mpeg">
     </audio>
 
-<script src="script.js"></script></body>
+    <script src="script.js"></script>
+</body>
 </html>
